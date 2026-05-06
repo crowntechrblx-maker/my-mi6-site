@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Q-Branch Inventory</title><link rel="stylesheet" href="style.css"></head>
+<body>
+    <header class="header"><div class="container"><strong>Q-BRANCH INVENTORY</strong></div></header>
+    <main class="container section">
+        <h1>Tech & Equipment</h1>
+        <div class="grid" id="equipment-list">
+            <!-- This will be filled by JS based on clearance -->
+        </div>
+    </main>
+
+    <script>
+        const clearance = parseInt(localStorage.getItem('userClearance').replace(/\D/g, ''));
+        const equipment = [
+            { name: "Omega Seamaster", level: 3, desc: "Standard issue with remote detonator." },
+            { name: "Encryption Hub", level: 5, desc: "Tactical data relay unit." },
+            { name: "Neural Link (PROTOTYPE)", level: 9, desc: "Restricted to Chief level only." }
+        ];
+
+        const list = document.getElementById('equipment-list');
+        equipment.forEach(item => {
+            if (clearance >= item.level) {
+                list.innerHTML += `
+                    <div class="card">
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                        <span style="font-size:10px; color:green;">AVAILABLE</span>
+                    </div>`;
+            } else {
+                list.innerHTML += `
+                    <div class="card" style="opacity: 0.5;">
+                        <h3>REDACTED</h3>
+                        <p>Access Denied: Requires Level ${item.level}</p>
+                    </div>`;
+            }
+        });
+    </script>
+</body>
+</html>
