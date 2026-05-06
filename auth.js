@@ -20,7 +20,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         localStorage.setItem('userName', result.name);
         localStorage.setItem('userClearance', result.clearance);
         
-        window.location.href = 'portal.html';
+        window.location.href = '/portal';
     } else {
         errorMsg.style.display = 'block';
         errorMsg.textContent = "ACCESS DENIED: SERVICE NUMBER OR AUTH KEY INVALID";
