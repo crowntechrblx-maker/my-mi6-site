@@ -1,0 +1,114 @@
+:root {
+    --mi6-blue: #1d70b8;
+    --mi6-dark: #0b0c0c;
+    --mi6-card-bg: #151717;
+    --mi6-border: #2f3535;
+    --mi6-text-grey: #b1b4b6;
+    --accent-green: #00ff00;
+}
+
+body {
+    background-color: var(--mi6-dark);
+    color: white;
+    font-family: "GDS Transport", Arial, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Header & Sticky Nav */
+header { background: #000; padding: 25px 0; border-bottom: 4px solid var(--mi6-blue); }
+nav { background: #1a1a1a; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--mi6-border); }
+nav .container { display: flex; gap: 30px; padding: 15px 20px; }
+nav a { color: white; text-decoration: none; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+nav a:hover { color: var(--mi6-blue); }
+
+/* Hero Section with Scanning Animation */
+.hero { padding: 100px 0; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); background-size: cover; }
+.scan-line { width: 100%; height: 2px; background: var(--mi6-blue); position: absolute; animation: scan 4s infinite linear; opacity: 0.3; }
+@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+/* Grid System */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+.card { background: var(--mi6-card-bg); border: 1px solid var(--mi6-border); padding: 30px; transition: 0.3s; position: relative; overflow: hidden; }
+.card:hover { border-color: var(--mi6-blue); transform: translateY(-5px); }
+.card::before { content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--mi6-blue); }
+
+/* Buttons */
+.btn { background: var(--mi6-blue); color: white; padding: 15px 35px; text-decoration: none; display: inline-block; font-weight: bold; border: none; cursor: pointer; }
+.btn-outline { background: transparent; border: 2px solid white; }
+.btn:hover { background: #144e82; }
+
+/* Footer */
+footer { background: #000; padding: 80px 0 40px; margin-top: 100px; border-top: 1px solid var(--mi6-border); color: var(--mi6-text-grey); font-size: 13px; }
+
+/* Smooth transitions for filtering roles */
+.role-card {
+    transition: all 0.4s ease-in-out;
+}
+
+/* Better inputs for the Contact Form */
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--mi6-blue) !important;
+    box-shadow: 0 0 10px rgba(29, 112, 184, 0.4);
+}
+
+/* Custom scrollbar for that technical feel */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--mi6-dark); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--mi6-blue); }
+
+/* Badge Styles */
+.badge-dv { 
+    background: #d4351c; /* Official UK Govt Red */
+    color: white; font-size: 11px; padding: 4px 8px; 
+    position: absolute; top: 10px; right: 10px; font-weight: bold;
+}
+.badge-sc { 
+    background: #00703c; /* Official UK Govt Green */
+    color: white; font-size: 11px; padding: 4px 8px; 
+    position: absolute; top: 10px; right: 10px; font-weight: bold;
+}
+
+/* Timeline Layout */
+.timeline {
+    border-left: 2px solid #333;
+    padding-left: 20px;
+    margin: 40px 0;
+}
+.timeline-item {
+    margin-bottom: 30px;
+    position: relative;
+}
+.step-num {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    color: var(--mi6-blue);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Role List styles */
+.role-details {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: var(--mi6-text-grey);
+}
+.role-details li {
+    padding: 5px 0;
+    border-bottom: 1px solid #222;
+}
+.role-details li strong {
+    color: white;
+}
+
+/* Animations */
+.role-card:hover {
+    box-shadow: 0 10px 30px rgba(29, 112, 184, 0.3);
+}

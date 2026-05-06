@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recruitment Hub | SIS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><div class="container"><strong>SECRET INTELLIGENCE SERVICE</strong></div></header>
+    <nav><div class="container">
+        <a href="/">Dashboard</a><a href="/mission">Our Mission</a><a href="/tech">Technology</a><a href="/careers">Recruitment</a><a href="/contact">Contact</a>
+    </div></nav>
+
+    <main class="container" style="padding-top: 60px;">
+        <div class="hero-sub">
+            <h1>Your Career in Intelligence</h1>
+            <p style="color: var(--mi6-text-grey); font-size: 1.2rem;">Join a team that protects the UK from global threats. We are looking for diversity of thought, background, and experience.</p>
+        </div>
+
+        <!-- Eligibility Checker Tool -->
+        <section class="card" style="margin-top: 40px; border-left: 5px solid var(--accent-green);">
+            <h2 style="margin-top:0;">Pre-Screening: Eligibility Checker</h2>
+            <p>Before applying, you must meet our core residency and nationality requirements.</p>
+            
+            <div id="quiz-container">
+                <div class="quiz-question">
+                    <p><strong>1. Are you a British Citizen?</strong></p>
+                    <button class="btn btn-outline" onclick="checkEligibility(true)">Yes</button>
+                    <button class="btn btn-outline" onclick="checkEligibility(false)">No</button>
+                </div>
+            </div>
+            <div id="quiz-result" style="margin-top: 20px; font-weight: bold; display: none;"></div>
+        </section>
+
+        <!-- Recruitment Timeline -->
+        <section style="margin-top: 60px;">
+            <h2>The Recruitment Process</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="step-num">01</span>
+                    <div><strong>Registration & Application</strong><br>Submit your details through our secure portal.</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-num">02</span>
+                    <div><strong>Online Testing</strong><br>Numerical, verbal, and situational judgement tests.</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-num">03</span>
+                    <div><strong>Assessment Center</strong><br>In-depth interviews and group exercises.</div>
+                </div>
+                <div class="timeline-item">
+                    <span class="step-num">04</span>
+                    <div><strong>Vetting (DV)</strong><br>Highest level of security clearance: Developed Vetting.</div>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="roles.html" class="btn">Search All Vacancies</a>
+        </div>
+    </main>
+
+    <script>
+        function checkEligibility(isCitizen) {
+            const result = document.getElementById('quiz-result');
+            result.style.display = 'block';
+            if (isCitizen) {
+                result.innerHTML = "✅ You may be eligible to apply. Proceed to job roles.";
+                result.style.color = "#00ff00";
+            } else {
+                result.innerHTML = "❌ Only British Citizens can apply for roles at SIS.";
+                result.style.color = "#ff3b3b";
+            }
+        }
+    </script>
+</body>
+</html>

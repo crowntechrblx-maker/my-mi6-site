@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Global Command | SIS</title><link rel="stylesheet" href="style.css">
+<style>
+    .map-container { position: relative; background: #0b0c0c; border: 1px solid #333; overflow: hidden; height: 500px; }
+    .point { 
+        position: absolute; width: 10px; height: 10px; background: red; border-radius: 50%;
+        box-shadow: 0 0 10px red; animation: pulse 2s infinite; cursor: pointer;
+    }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
+    .status-bar { background: #111; padding: 10px; border-top: 1px solid #333; font-family: monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+    <header class="header"><div class="container"><strong>SITUATION ROOM: GLOBAL MONITOR</strong></div></header>
+
+    <main class="container" style="padding-top: 20px;">
+        <div class="map-container">
+            <!-- Simulated Points of Interest for the community -->
+            <div class="point" style="top: 30%; left: 45%;" onclick="alert('UK HQ: STATUS GREEN')"></div>
+            <div class="point" style="top: 40%; left: 75%;" onclick="alert('ASSET 4: OFFLINE')"></div>
+            <div class="point" style="top: 60%; left: 20%;" onclick="alert('OPERATION NIGHTFALL: IN PROGRESS')"></div>
+            
+            <!-- Simple placeholder world map overlay -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" 
+                 style="width: 100%; opacity: 0.1; filter: invert(1);">
+        </div>
+        <div class="status-bar">
+            SYSTEMS: NOMINAL // ACTIVE ASSETS: 14 // CONNECTION: ENCRYPTED
+        </div>
+    </main>
+</body>
+</html>

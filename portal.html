@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>SIS Internal Portal</title><link rel="stylesheet" href="style.css"></head>
+<body style="background: #000;">
+
+    <nav><div class="container" style="display:flex; justify-content: space-between;">
+        <span>OFFICER LOGGED IN: <span id="staff-name" style="color: var(--accent-green);"></span></span>
+        <a href="#" onclick="logout()">LOGOUT</a>
+    </div></nav>
+
+    <main class="container">
+    <div id="loading-mask" style="padding:100px; text-align:center;">AUTHENTICATING WITH HQ...</div>
+    
+    <!-- This starts hidden -->
+    <div id="secure-content" style="display:none;">
+        <h1 id="portal-title">Field Terminal</h1>
+
+        <section class="grid">
+    <!-- Personnel File -->
+    <div class="card" id="personnel-file">
+        <h2 style="color: var(--mi6-blue); border-bottom: 1px solid #333; padding-bottom: 10px;">Personnel File</h2>
+        <p><strong>NAME:</strong> <span id="display-name">---</span></p>
+        <p><strong>CLEARANCE:</strong> <span id="display-clearance" style="color: red;">---</span></p>
+        <p><strong>STATUS:</strong> <span style="color: var(--accent-green);">ACTIVE</span></p>
+        <p><strong>UNIT:</strong> <span id="display-role">---</span></p>
+    </div>
+
+    <!-- Intelligence Feed -->
+    <div class="card">
+        <h2 style="color: var(--mi6-blue);">Latest Intel</h2>
+        <div id="intel-feed" style="font-family: monospace; font-size: 0.8rem; height: 150px; overflow-y: auto;">
+            <p>> SYSTEM: Online</p>
+            <p>> WELCOME TO THE SIS INTRANET</p>
+        </div>
+    </div>
+</section>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Live Situation Reports</h3>
+                <p style="color: var(--accent-green); font-family: monospace;">> 08:42: SIGNINT Alert in Red Sea<br>> 10:15: Assets in position: Moscow<br>> 12:00: Station B comms check green</p>
+            </div>
+            <div class="card">
+                <h3>Vetting Status</h3>
+                <p>Status: <span style="color: gold;">In Progress</span><br>Current Level: DV (Top Secret)<br>Last Updated: 14 days ago</p>
+            </div>
+            <div class="card">
+                <h3>Q-Branch Requests</h3>
+                <button class="btn btn-outline">New Requisition</button>
+            </div>
+            <div class="card">
+    <h3>Secure Comms</h3>
+    <p>Encrypted channel for field personnel.</p>
+    <a href="comms.html" class="btn btn-outline">Enter Channel</a>
+</div>
+<div class="card">
+    <h3>Command Map</h3>
+    <p>Real-time global operations monitor.</p>
+    <a href="map.html" class="btn btn-outline">View Map</a>
+</div>
+        </div>
+    </main>
+
+    <script>
+    async function loadPortal() {
+        const res = await fetch('/api/verify-session', {
+            headers: { 
+                'Service-Number': localStorage.getItem('serviceNum'),
+                'Session-Key': localStorage.getItem('sessionKey') 
+            }
+        });
+
+        if (res.ok) {
+            document.getElementById('loading-mask').style.display = 'none';
+            document.getElementById('secure-content').style.display = 'block';
+        } else {
+            localStorage.clear();
+            window.location.replace('/login');
+        }
+    }
+    loadPortal();
+</script>
+</body>
+</html>

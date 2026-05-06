@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SIS | Authorised Access Only</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-box {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #111;
+            padding: 40px;
+            border: 1px solid #333;
+            box-shadow: 0 0 30px rgba(0,0,0,1);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #000;
+            border: 1px solid var(--mi6-blue);
+            color: var(--accent-green);
+            font-family: monospace;
+        }
+        .biometric-scanner {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--mi6-blue);
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--mi6-blue);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(29, 112, 184, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(29, 112, 184, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(29, 112, 184, 0); }
+        }
+    </style>
+</head>
+<body style="background-color: #050505;">
+
+    <div class="login-box">
+        <div class="biometric-scanner">
+            <svg width="40" height="40" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/></svg>
+        </div>
+        <h2 style="letter-spacing: 2px;">SECURE LOGON</h2>
+        <p style="font-size: 11px; color: #555;">INTERNAL SERVICE PERSONNEL ONLY</p>
+        
+        <form id="loginForm">
+            <input type="text" id="service_number" placeholder="SERVICE NUMBER" required>
+            <input type="password" id="auth_key" placeholder="AUTHORISATION KEY" required>
+            <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">AUTHENTICATE</button>
+        </form>
+        <p id="error-msg" style="color: red; font-size: 12px; margin-top: 15px; display: none;">ACCESS DENIED: INVALID CREDENTIALS</p>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
